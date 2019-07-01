@@ -3,17 +3,14 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
-trigger:
-- master
-
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
 - task: Maven@3
   inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/TEST-*.xml'
+    # testResultsFormat: 'JUnit'
+    # testResultsFiles: '**/TEST-*.xml'
     #searchFolder: '$(System.DefaultWorkingDirectory)'
     #mergeTestResults: false # Optional
     #failTaskOnFailedTests: false # Optional
@@ -21,11 +18,15 @@ steps:
     #buildPlatform: # Optional
     #buildConfiguration: # Optional
     #publishRunAttachments: true # Optional
+    sqMavenPluginVersionChoice: 'latest'
+    testRunTitle: 'Test Service'
+    publishJUnitResults: true
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
+    mavenAuthenticateFeed: false
+    sonarQubeRunAnalysis: true
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
-    publishJUnitResults: false
-    # testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
