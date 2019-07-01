@@ -24,7 +24,8 @@ steps:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
     mavenAuthenticateFeed: false
-    sonarQubeRunAnalysis: true
+    # -- option for user sonar analysis --
+    # sonarQubeRunAnalysis: true
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
