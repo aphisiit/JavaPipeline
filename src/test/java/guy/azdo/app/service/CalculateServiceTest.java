@@ -35,7 +35,7 @@ public class CalculateServiceTest {
         Integer a = 5;
         Integer b = 10;
 
-        assertThat(calculateService.add(a,b)).isEqualTo(15);
+        assertThat(calculateService.add(a,b)).isEqualTo(10);
     }
 
     @Test
